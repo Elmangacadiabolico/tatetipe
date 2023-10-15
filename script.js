@@ -25,16 +25,36 @@ function marcarCasillaO(casilla) {
   casilla.appendChild(imageO);
 }
 
+
+
 function marcarCasilla(casilla) {
+  // Verificar si quedan casillas disponibles
+  let casillasDisponibles = false;
+  for (let i = 0; i < matriz.length; i++) {
+    if (matriz[i] === 0) {
+      casillasDisponibles = true;
+      break;
+    }
+  }
+
+  if (!casillasDisponibles) {
+    console.log("No hay más casillas disponibles para hacer clic.");
+    return;
+  }
+
   if (!casilla.querySelector('img')) {
     if (turnoX) {
       marcarCasillaX(casilla);
     } else {
       marcarCasillaO(casilla);
     }
-    turnoX = !turnoX; // Alternar el turno
+    turnoX = !turnoX;
   }
+
+  // Verificar fin de la partida después de marcar la casilla
+  verificarFinDePartida();
 }
+
 
 
 casill0.addEventListener("click", function () {
