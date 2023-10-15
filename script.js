@@ -25,10 +25,12 @@ function marcarCasillaO(casilla) {
   casilla.appendChild(imageO);
 }
 
-
-
 function marcarCasilla(casilla) {
-  // Verificar si quedan casillas disponibles
+  if (!running) {
+    console.log("El juego ha terminado. Reinicia la página para jugar de nuevo.");
+    return;
+  }
+
   let casillasDisponibles = false;
   for (let i = 0; i < matriz.length; i++) {
     if (matriz[i] === 0) {
@@ -38,7 +40,8 @@ function marcarCasilla(casilla) {
   }
 
   if (!casillasDisponibles) {
-    console.log("No hay más casillas disponibles para hacer clic.");
+    console.log("Empate. No hay más casillas disponibles para hacer clic.");
+    running = false;
     return;
   }
 
@@ -51,9 +54,40 @@ function marcarCasilla(casilla) {
     turnoX = !turnoX;
   }
 
-  // Verificar fin de la partida después de marcar la casilla
   verificarFinDePartida();
 }
+function verificarFinDePartida() {
+  const lineasGanadoras = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], // Filas
+    [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columnas
+    [0, 4, 8], [2, 4, 6]              // Diagonales
+  ];
+
+  // Verificar si algún jugador ganó
+  for (const linea of lineasGanadoras) {
+    const [a, b, c] = linea;
+    if (matriz[a] && matriz[a] === matriz[b] && matriz[a] === matriz[c]) {
+      console.log(`¡Fin de la partida! Jugador ${matriz[a]} gana.`);
+      running = false;
+      return;
+    }
+  }
+
+  // Verificar empate
+  let empate = true;
+  for (let i = 0; i < matriz.length; i++) {
+    if (matriz[i] === 0) {
+      empate = false;
+      break;
+    }
+  }
+
+  if (empate) {
+    console.log("¡Empate! No hay más casillas disponibles.");
+    running = false;
+  }
+}
+
 
 
 
