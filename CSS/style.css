@@ -241,6 +241,38 @@ display:none
     box-shadow: 0 0 10px rgba(204, 0, 255, 0.7), 0 0 20px rgb(204, 0, 255), 0 0 30px rgb(204, 0, 255);
     
 }
+.ganadorCHale {
+    color: rgb(0, 183, 255); 
+    text-align: center; /* Alineación del texto al centro */
+    padding: 10px;
+    animation: cambioColor 1000ms infinite; /*nombre de la animacion*/
+  }
+  
+  @keyframes cambioColor {
+    0% {
+      color: rgb(247, 1, 1);
+    }
+  
+    40% {
+        color: rgb(255, 0, 230); 
+      }
+      
+    20% {
+      color: rgb(255, 0, 0); 
+    }
+
+    50% {
+        color: rgb(0, 255, 234); 
+      }
+
+    75% {
+        color: rgb(0, 63, 253); 
+      }
+
+    100% {
+      color: rgb(0, 247, 45); 
+    }
+  }
 /*
 personas que hicieron este codigo :  Franco Racca ,Emanuel Isa Y  Leandro Rios BAS
 */

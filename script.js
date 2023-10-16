@@ -8,6 +8,7 @@ const casill6 = document.getElementById("cosit6");
 const casill7 = document.getElementById("cosit7");
 const casill8 = document.getElementById("cosit8");
 
+
 let turnoX = true; /* se declara una variale para tener un registro de turno
 luego se usa una unfuin llamada marcarCasilla, donde  Si turnoX es true,
  es el turno de "X", y si es false, es el turno de "O".
@@ -67,6 +68,10 @@ function verificarFinDePartida() {
   for (const linea of lineasGanadoras) {
     const [a, b, c] = linea;
     if (matriz[a] && matriz[a] === matriz[b] && matriz[a] === matriz[c]) {
+      const mensajeGanador = document.getElementById("mensajeDelganador");
+
+    mensajeGanador.textContent = `¡Fin de la partida! Jugador ${matriz[a]} gana.`;
+
       console.log(`¡Fin de la partida! Jugador ${matriz[a]} gana.`);
       running = false;
       return;
