@@ -28,6 +28,8 @@ function marcarCasillaO(casilla) {
 
 function marcarCasilla(casilla) {
   if (!running) {
+    const MensajeFinal = document.getElementById("GamerOver");
+    MensajeFinal.textContent = `¡ GAMER OVER ! Reinicia la página para jugar de nuevo `
     console.log("El juego ha terminado. Reinicia la página para jugar de nuevo.");
     return;
   }
@@ -41,6 +43,7 @@ function marcarCasilla(casilla) {
   }
 
   if (!casillasDisponibles) {
+    
     console.log("Empate. No hay más casillas disponibles para hacer clic.");
     running = false;
     return;
@@ -70,7 +73,7 @@ function verificarFinDePartida() {
     if (matriz[a] && matriz[a] === matriz[b] && matriz[a] === matriz[c]) {
       const mensajeGanador = document.getElementById("mensajeDelganador");
 
-    mensajeGanador.textContent = `¡Fin de la partida! Jugador ${matriz[a]} gana.`;
+    mensajeGanador.textContent = `¡ el jugador ${matriz[a]} gana !.`;
 
       console.log(`¡Fin de la partida! Jugador ${matriz[a]} gana.`);
       running = false;
